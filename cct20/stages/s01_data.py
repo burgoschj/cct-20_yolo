@@ -49,8 +49,13 @@ if not any(IMG_DIR.rglob('*.jpg')) if IMG_DIR.exists() else True:
         with tarfile.open(IMG_TAR) as tf: tf.extractall(IMG_DIR)
     IMG_TAR.unlink()          # libera ~6 GB de disco
 if not any(ANN_DIR.rglob('*.json')) if ANN_DIR.exists() else True:
-    download(ANN_URLS, ANN_ZIP)
     ANN_DIR.mkdir(exist_ok=True)
+    # Copia local opcional (útil si LILA bloquea la descarga): OUT/datos/eccv_18_annotation_files.zip
+    _local = OUT / 'datos' / 'eccv_18_annotation_files.zip'
+    if _local.exists():
+        print('Anotaciones desde copia local:', _local); ANN_ZIP = _local
+    else:
+        download(ANN_URLS, ANN_ZIP)
     zipfile.ZipFile(ANN_ZIP).extractall(ANN_DIR)
 
 print('Imágenes .jpg:', sum(1 for _ in IMG_DIR.rglob('*.jpg')))
