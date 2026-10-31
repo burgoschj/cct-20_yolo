@@ -1,0 +1,12 @@
+# datos y resultados pesados: se regeneran con `python run_all.py`
+data/
+data_smoke/
+outputs/
+outputs_smoke/
+*.pt
+*.tar.gz
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+runs/

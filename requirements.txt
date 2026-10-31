@@ -1,0 +1,18 @@
+# Especificación de entorno (rangos compatibles). Versión exacta probada: requirements-lock.txt
+# Python 3.10 – 3.13
+ultralytics==8.4.190        # versión fija: es la que se usó para entrenar y evaluar
+torch>=2.2                  # CPU o CUDA; en Colab ya viene instalado (se usó 2.11.0+cu130)
+torchvision>=0.17
+numpy>=2.0,<3
+pandas>=2.2
+scipy>=1.13
+matplotlib>=3.8
+opencv-python-headless>=4.9
+pycocotools>=2.0.8
+openpyxl>=3.1
+PyYAML>=6.0
+tqdm>=4.66
+pillow>=10.0
+requests>=2.31
+psutil>=5.9
+tabulate>=0.9           # solo para RESUMEN.md (opcional)
