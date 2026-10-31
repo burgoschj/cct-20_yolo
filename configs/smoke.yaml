@@ -1,0 +1,25 @@
+# Prueba de humo: datos sintéticos diminutos, modelo sin preentrenar, CPU, ~5-10 min.
+# Verifica que TODAS las etapas corren de extremo a extremo; sus métricas no tienen significado científico.
+cfg:
+  model: yolov8n.yaml        # arquitectura sin pesos (no necesita internet)
+  imgsz: 160
+  max_side: 160
+  epochs: 3
+  batch: 8
+  workers: 0
+  patience: 5
+  conf_pred: 0.01
+  iou_nms: 0.7
+  max_det: 50
+  conf_op: 0.25
+  gradcam_layers: [4, 6, 9]
+  bg_from_cis_val: true
+  val_splits: [trans_val]
+  non_animal: [car]
+  min_boxes: 5
+  n_cam: 8
+  n_masked: 10
+  train_plots: false
+  run_e1: false
+  run_e2: false
+  run_e3: false

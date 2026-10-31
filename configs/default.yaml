@@ -1,0 +1,24 @@
+# Configuración del experimento completo (CCT-20, YOLOv8s, GPU T4 de Colab ≈ 2.5 h de entrenamiento)
+cfg:
+  model: yolov8s.pt          # pesos COCO (se descargan automáticamente)
+  imgsz: 640                 # resolución de entrada
+  max_side: 640              # las imágenes se redimensionan a este lado mayor al construir el dataset
+  epochs: 50
+  batch: 32                  # si hay "CUDA out of memory", bajar a 16
+  workers: 2
+  patience: 15               # parada temprana
+  conf_pred: 0.01            # umbral bajo para guardar predicciones y calcular AP
+  iou_nms: 0.7
+  max_det: 50
+  conf_op: 0.25              # umbral operativo (el que usaría un equipo de manejo)
+  gradcam_layers: [4, 6, 9]  # capas del backbone de YOLOv8 que alimentan P3/P4/P5
+  bg_from_cis_val: true      # fondos de entrenamiento = vacías de cis_val (el train oficial no tiene vacías)
+  val_splits: [trans_val]    # validación para elegir best.pt
+  non_animal: [car]          # clases que no cuentan como fauna en el monitoreo
+  min_boxes: 30              # mínimo de cajas para evaluar un subgrupo (oclusión/tamaño)
+  n_cam: 150                 # imágenes por partición para Grad-CAM
+  n_masked: 200              # imágenes por partición para la prueba del animal enmascarado
+  train_plots: true          # gráficos de Ultralytics (descargan una fuente de GitHub la primera vez)
+  run_e1: false              # ablación: sin fondos
+  run_e2: false              # ablación: repeat-factor sampling
+  run_e3: false              # ablación: 960 px
