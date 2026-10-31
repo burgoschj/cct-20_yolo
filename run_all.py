@@ -4,10 +4,11 @@
     python run_all.py            # pipeline completo (descarga CCT-20, entrena, evalúa, monitorea)
     python run_all.py --smoke    # verificación rápida con datos sintéticos (CPU, minutos)
 """
-import argparse
+import argparse, sys
 from pathlib import Path
 
-HERE = Path(__file__).parent
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
 
 
 def main():
