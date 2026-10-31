@@ -14,7 +14,7 @@ python run_all.py                   # 2) TODO el proyecto: descarga → entrena 
 `python run_all.py` descarga CCT-20 (~6 GB) desde LILA, construye el dataset YOLO, entrena, evalúa y
 deja en `outputs/` las tablas, figuras, el reporte de monitoreo y un `.zip` con los entregables.
 
-**¿Quieres comprobar que el repo funciona antes de gastar horas de GPU?**
+**¿Quieres comprobar que el repositorio funciona antes de gastar horas de GPU?**
 
 ```bash
 python run_all.py --smoke           # ~1-2 min en CPU, datos sintéticos, sin descargas
@@ -54,7 +54,7 @@ from google.colab import drive; drive.mount('/content/drive')
 - `--out-dir` va en **Drive** para que entrenamiento, predicciones y resultados sobrevivan a una caída de sesión.
 - **Si la sesión se cae, vuelve a ejecutar el mismo comando**: reanuda el entrenamiento desde `last.pt` y reutiliza
   dataset, pesos y predicciones ya guardados.
-- Si ya tienes la carpeta `cct20_yolo` en Drive de la corrida previa en el cuaderno, apuntar `--out-dir` ahí
+- Si ya se tiene la carpeta `cct20_yolo` en Drive de la corrida previa en el cuaderno, apuntar `--out-dir` ahí
   reutiliza el modelo entrenado (E0) y las predicciones: solo se recalcula la evaluación.
 
 ## Opciones
@@ -66,8 +66,7 @@ python run_all.py --config configs/mi.yaml         # otra configuración
 python run_all.py --data-dir D --out-dir O         # rutas de datos y resultados
 ```
 
-Toda la configuración está en `configs/default.yaml` (comentada). Las ablaciones opcionales
-(`run_e1`: sin fondos, `run_e2`: repeat-factor sampling, `run_e3`: 960 px) están apagadas por defecto.
+Toda la configuración está en `configs/default.yaml`.
 
 ## Qué hace cada etapa y dónde está cada entregable
 
