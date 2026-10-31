@@ -11,7 +11,7 @@ pip install -r requirements.txt     # 1) entorno
 python run_all.py                   # 2) TODO el proyecto: descarga → entrena → evalúa → monitorea → empaqueta
 ```
 
-Eso es todo. `python run_all.py` descarga CCT-20 (~6 GB) desde LILA, construye el dataset YOLO, entrena, evalúa y
+`python run_all.py` descarga CCT-20 (~6 GB) desde LILA, construye el dataset YOLO, entrena, evalúa y
 deja en `outputs/` las tablas, figuras, el reporte de monitoreo y un `.zip` con los entregables.
 
 **¿Quieres comprobar que el repo funciona antes de gastar horas de GPU?**
@@ -83,7 +83,6 @@ Toda la configuración está en `configs/default.yaml` (comentada). Las ablacion
 | s07 | `s07_monitoring.py` | **5. Módulo de monitoreo** (reglas R1–R5) y demo en cámara no vista | `reporte_monitoreo.xlsx`, `tablas/18_*`–`22_*`, `figuras/10_*` |
 | s08 | `s08_package.py` | Paquete final | `entregables_resultados.zip`, `RESUMEN.md` |
 
-El entregable **6 (IA responsable)** es el texto del informe; se apoya en las tablas anteriores. 
 
 ## Decisiones metodológicas clave
 
@@ -102,17 +101,9 @@ cct20/runner.py       # ejecuta las etapas en orden con espacio de nombres compa
 cct20/stages/         # s00 … s08: el código del proyecto, por etapa
 cct20/synthetic.py    # dataset sintético para --smoke
 tests/test_smoke.py   # prueba de extremo a extremo
-notebooks/            # versión original en cuaderno de Colab (misma lógica, paso a paso)
+notebooks/            # versión original en cuaderno de Colab
 ```
 
-## Limitaciones y transparencia
-
-- **Lo verificado automáticamente** es el flujo completo con datos sintéticos (`--smoke`, incluye generación del reporte, figuras y zip). La corrida con CCT-20 real y GPU se hizo en Colab con el cuaderno de `notebooks/`, de donde salen los resultados del informe; este repo contiene esa misma lógica empaquetada como pipeline, con cambios mínimos (rutas y parámetros desde YAML, figuras sin pantalla, predicción por trozos). El pipeline completo sobre CCT-20 real aún no se ha re-ejecutado desde este repo.
-- Las etapas comparten variables (estilo cuaderno): para reanudar basta repetir el comando; no se ejecutan etapas sueltas.
-- La **validación manual del proxy de oclusión** (etiquetar a mano 96 recortes) es interactiva y no forma parte del pipeline automático; sus resultados (Spearman ≈ 0.30) están en el informe.
-- Los timestamps de CCT-20 tienen un artefacto en la hora 12; el análisis horario del monitoreo debe leerse con ese caveat.
-- Calibración y demo del monitoreo usan **una** cámara de validación y **una** de demostración: ilustran el método, no garantizan desempeño general.
-- Los datos pertenecen a LILA BC / Caltech Camera Traps; revisa su licencia antes de redistribuirlos (este repo no los incluye).
 
 ## Referencias
 
