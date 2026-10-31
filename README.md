@@ -2,7 +2,7 @@
 
 Detección de fauna en fotos de cámaras trampa con **YOLOv8s**, evaluada con rigor: mAP por especie y efecto del
 desbalance, generalización a cámaras nunca vistas (cis vs trans) con Grad-CAM, robustez a oclusión y tamaño,
-un módulo de monitoreo basado en reglas con demo en una cámara no vista, y reflexión sobre IA responsable.
+un módulo de monitoreo basado en reglas con demo en una cámara no vista.
 
 ## Ejecución de extremo a extremo (un único comando)
 
