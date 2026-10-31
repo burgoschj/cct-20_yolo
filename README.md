@@ -44,7 +44,7 @@ build adecuada desde <https://pytorch.org> antes de `pip install -r requirements
 
 ```python
 from google.colab import drive; drive.mount('/content/drive')
-!git clone https://github.com/<TU_USUARIO>/<TU_REPO>.git
+!git clone https://github.com/burgoschj/cct-20_yolo.git
 %cd <TU_REPO>
 !pip -q install -r requirements.txt
 !python run_all.py --data-dir /content/cct20_data --out-dir /content/drive/MyDrive/cct20_yolo
