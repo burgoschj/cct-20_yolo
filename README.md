@@ -14,16 +14,6 @@ python run_all.py                   # 2) TODO el proyecto: descarga → entrena 
 `python run_all.py` descarga CCT-20 (~6 GB) desde LILA, construye el dataset YOLO, entrena, evalúa y
 deja en `outputs/` las tablas, figuras, el reporte de monitoreo y un `.zip` con los entregables.
 
-**¿Quieres comprobar que el repositorio funciona antes de gastar horas de GPU?**
-
-```bash
-python run_all.py --smoke           # ~1-2 min en CPU, datos sintéticos, sin descargas
-```
-
-`--smoke` genera un mini-dataset sintético con el mismo formato que CCT-20 y corre **las 9 etapas completas** con un
-modelo diminuto. Verifica que el código corre de punta a punta; sus métricas (≈0) no tienen significado.
-También: `python tests/test_smoke.py`.
-
 ## Entorno
 
 | Archivo | Para qué |
