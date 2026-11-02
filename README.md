@@ -21,7 +21,7 @@ python run_all.py --smoke           # ~1-2 min en CPU, datos sintéticos, sin de
 ```
 
 `--smoke` genera un mini-dataset sintético con el mismo formato que CCT-20 y corre **las 9 etapas completas** con un
-modelo diminuto. Verifica que el código corre de punta a punta; sus métricas (≈0) no tienen significado científico.
+modelo diminuto. Verifica que el código corre de punta a punta; sus métricas (≈0) no tienen significado.
 También: `python tests/test_smoke.py`.
 
 ## Entorno
@@ -34,7 +34,7 @@ También: `python tests/test_smoke.py`.
 
 Python 3.10–3.13. Se necesita **GPU** para el entrenamiento completo (se usó una T4 de Colab: ≈2.4 h para 39 épocas
 con parada temprana). Sin GPU el pipeline corre pero el entrenamiento completo sería impracticable.
-PyTorch no está fijado: en Colab ya viene instalado con CUDA (se usó 2.11.0+cu130); en local instala la
+PyTorch no está fijado: en Colab ya viene instalado con CUDA (se usó 2.11.0+cu130); en local instalar la
 build adecuada desde <https://pytorch.org> antes de `pip install -r requirements.txt`.
 
 ## Ejecutar en Google Colab (recomendado para el entrenamiento completo)
@@ -52,9 +52,9 @@ from google.colab import drive; drive.mount('/content/drive')
 
 - `--data-dir` va en el disco local rápido de Colab (los datos se vuelven a descargar si la sesión se pierde).
 - `--out-dir` va en **Drive** para que entrenamiento, predicciones y resultados sobrevivan a una caída de sesión.
-- **Si la sesión se cae, vuelve a ejecutar el mismo comando**: reanuda el entrenamiento desde `last.pt` y reutiliza
+- **Si la sesión se cae, volver a ejecutar el mismo comando**: reanuda el entrenamiento desde `last.pt` y reutiliza
   dataset, pesos y predicciones ya guardados.
-- Si ya se tiene la carpeta `cct20_yolo` en Drive de la corrida previa en el cuaderno, apuntar `--out-dir` ahí
+- Si ya se tiene la carpeta `cct20_yolo` en Drive, apuntar `--out-dir` así
   reutiliza el modelo entrenado (E0) y las predicciones: solo se recalcula la evaluación.
 
 ## Opciones
@@ -87,7 +87,7 @@ Toda la configuración está en `configs/default.yaml`.
 
 - **Validación = `trans_val`**. `cis_val` comparte 224 secuencias con `train`, así que no sirve para elegir checkpoint sin filtrarse información.
 - **Fondos**: el `train` oficial no tiene imágenes vacías; se añaden 995 vacías de `cis_val` como fondos. Las 7 824 imágenes sin etiqueta se excluyen.
-- **mAP por subgrupo** con `pycocotools` (cajas fuera del grupo se marcan `iscrowd=1`); sus valores son 0.01–0.03 menores que los de Ultralytics por usar `conf=0.01` y `max_det=50` (en vez de 0.001 y 300). Los números del informe indican cuál se usa en cada caso.
+- **mAP por subgrupo** con `pycocotools` (cajas fuera del grupo se marcan `iscrowd=1`); sus valores son 0.01–0.03 menores que los de Ultralytics por usar `conf=0.01` y `max_det=50` (en vez de 0.001 y 300).
 - **Reglas del monitoreo calibradas en `trans_val`**, nunca en test; la demo usa una cámara de `trans_test` ausente del entrenamiento.
 - Semilla fija (42). `cudnn.benchmark=False` evita un pico de ~14 GB de GPU en la primera inferencia (importante en T4).
 
