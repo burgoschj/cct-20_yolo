@@ -70,7 +70,7 @@ Toda la configuración está en `configs/default.yaml`.
 | s05 | `s05_gradcam.py` | **3.** Grad-CAM | `tablas/11_*`, `12_*`, `13_*`, `figuras/06_*`, `07_*` |
 | s06 | `s06_robustness.py` | **4. Robustez** a oclusión y tamaño | `tablas/14_*`–`16_*`, `figuras/08_*`, `09_*` |
 | s07 | `s07_monitoring.py` | **5. Módulo de monitoreo** (reglas R1–R5) y demo en cámara no vista | `reporte_monitoreo.xlsx`, `tablas/18_*`–`22_*`, `figuras/10_*` |
-| s08 | `s08_package.py` | Paquete final | `entregables_resultados.zip`, `RESUMEN.md` |
+
 
 
 ## Decisiones metodológicas clave
