@@ -77,7 +77,7 @@ Toda la configuración está en `configs/default.yaml`.
 | s02 | `s02_train.py` | **1. Modelo YOLO** y decisiones de entrenamiento | `runs/E0_base/` (`decisiones_entrenamiento.json`, `weights/best.pt`), `figuras/03_curvas_entrenamiento.png` |
 | s03 | `s03_eval.py` | **2. mAP@0.5 y @0.5:0.95 por especie** + efecto del desbalance | `tablas/03_*`, `04_*`, `figuras/04_desbalance_vs_ap.png` |
 | s04 | `s04_generalization.py` | **3.** Brecha cis/trans, AP por ubicación | `tablas/07_*`, `09_*`, `10_*`, `figuras/05_*` |
-| s05 | `s05_gradcam.py` | **3.** Grad-CAM + prueba del animal enmascarado | `tablas/11_*`, `12_*`, `13_*`, `figuras/06_*`, `07_*` |
+| s05 | `s05_gradcam.py` | **3.** Grad-CAM | `tablas/11_*`, `12_*`, `13_*`, `figuras/06_*`, `07_*` |
 | s06 | `s06_robustness.py` | **4. Robustez** a oclusión y tamaño | `tablas/14_*`–`16_*`, `figuras/08_*`, `09_*` |
 | s07 | `s07_monitoring.py` | **5. Módulo de monitoreo** (reglas R1–R5) y demo en cámara no vista | `reporte_monitoreo.xlsx`, `tablas/18_*`–`22_*`, `figuras/10_*` |
 | s08 | `s08_package.py` | Paquete final | `entregables_resultados.zip`, `RESUMEN.md` |
