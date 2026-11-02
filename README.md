@@ -58,21 +58,6 @@ python run_all.py --data-dir D --out-dir O         # rutas de datos y resultados
 
 Toda la configuración está en `configs/default.yaml`.
 
-## Qué hace cada etapa y dónde está cada entregable
-
-| Etapa | Archivo | Entregable | Salidas principales (`outputs/`) |
-|---|---|---|---|
-| s00 | `cct20/stages/s00_setup.py` | Configuración, semillas, rutas | — |
-| s01 | `s01_data.py` | Datos: descarga, EDA, dataset YOLO, verificación de etiquetas | `figuras/01_eda.png`, `02_verificacion_etiquetas.png` |
-| s02 | `s02_train.py` | **1. Modelo YOLO** y decisiones de entrenamiento | `runs/E0_base/` (`decisiones_entrenamiento.json`, `weights/best.pt`), `figuras/03_curvas_entrenamiento.png` |
-| s03 | `s03_eval.py` | **2. mAP@0.5 y @0.5:0.95 por especie** + efecto del desbalance | `tablas/03_*`, `04_*`, `figuras/04_desbalance_vs_ap.png` |
-| s04 | `s04_generalization.py` | **3.** Brecha cis/trans, AP por ubicación | `tablas/07_*`, `09_*`, `10_*`, `figuras/05_*` |
-| s05 | `s05_gradcam.py` | **3.** Grad-CAM | `tablas/11_*`, `12_*`, `13_*`, `figuras/06_*`, `07_*` |
-| s06 | `s06_robustness.py` | **4. Robustez** a oclusión y tamaño | `tablas/14_*`–`16_*`, `figuras/08_*`, `09_*` |
-| s07 | `s07_monitoring.py` | **5. Módulo de monitoreo** (reglas R1–R5) y demo en cámara no vista | `reporte_monitoreo.xlsx`, `tablas/18_*`–`22_*`, `figuras/10_*` |
-
-
-
 ## Decisiones metodológicas clave
 
 - **Validación = `trans_val`**. `cis_val` comparte 224 secuencias con `train`, así que no sirve para elegir checkpoint sin filtrarse información.
